@@ -1,0 +1,35 @@
+{
+  "name": "@castella/macro",
+  "version": "1.0.0",
+  "description": "CSS in JS for React",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "jest",
+    "test:update": "jest -u",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "babel-plugin-macros"
+  ],
+  "author": "uhyo <uhyo@uhy.ooo>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uhyo/castella.git"
+  },
+  "dependencies": {
+    "babel-plugin-macros": "^2.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/types": "^7.12.1",
+    "@types/babel-plugin-macros": "^2.8.3",
+    "@types/babel-types": "^7.0.9",
+    "@types/node": "^14.11.10",
+    "babel-plugin-tester": "^10.0.0",
+    "jest": "^26.5.3",
+    "typescript": "^4.0.3"
+  }
+}
