@@ -21,8 +21,21 @@ pluginTester({
           }
         \`,
         html\`
-          <div class="left">\${slot("left")}</div>
-          <div class="right">\${slot("right")}</div>
+          <div class="left">\${slot("sub")}</div>
+          <div class="escape">\${slot("escape!'\\"&<foo>")}</div>
+          <div class="right">\${slot()}</div>
+        \`
+      );
+    `,
+    slotExpr: `
+      import { wc, css, html, slot } from '../../macro'
+
+      const expr1 = "foo", expr2 = "bar";
+      wc(
+        css\`\`,
+        html\`
+          <div>\${slot(expr1)}</div>
+          <div>\${slot(expr1 + expr2)}</div>
         \`
       );
     `,
