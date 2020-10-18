@@ -1,9 +1,14 @@
 import { NodePath } from "@babel/core";
 import {
+  arrayExpression,
   callExpression,
   CallExpression,
+  cloneNode,
   Expression,
   identifier,
+  objectExpression,
+  ObjectProperty,
+  objectProperty,
   sequenceExpression,
   stringLiteral,
   TaggedTemplateExpression,
@@ -14,7 +19,8 @@ import {
 import { MacroContext } from "./context";
 import { escapeHtml } from "./escape";
 import { runtimeNames } from "./runtime";
-import { putToTemporalVariable } from "./util";
+import { optimizeTemplateLiteral } from "./util/optimizeTemplateLiteral";
+import { putToTemporalVariable } from "./util/putToTemporalVariable";
 
 type HtmlContext = {
   slotNames: Expression[];
@@ -24,7 +30,7 @@ export function visitHtml(reference: NodePath, context: MacroContext) {
   const { parentPath } = reference;
   if (parentPath.isTaggedTemplateExpression()) {
     // html`...`
-    const htmlContext = {
+    const htmlContext: HtmlContext = {
       slotNames: [],
     };
 
@@ -35,7 +41,26 @@ export function visitHtml(reference: NodePath, context: MacroContext) {
         visitExpression(e, context, htmlContext);
       }
     }
+    // convert to object literal
+    const properties: ObjectProperty[] = [
+      objectProperty(identifier("html"), optimizeTemplateLiteral(quasi.node)),
+    ];
+    if (htmlContext.slotNames.length > 0) {
+      properties.push(
+        objectProperty(
+          identifier("slots"),
+          arrayExpression(htmlContext.slotNames)
+        )
+      );
+    }
+    const replacement = objectExpression(properties);
+    parentPath.replaceWith(replacement);
+
+    return;
   }
+  // ?
+  const runtimeSlot = context.importRuntime(reference.scope, runtimeNames.html);
+  reference.replaceWith(runtimeSlot);
 }
 
 function visitExpression(
@@ -98,6 +123,7 @@ function visitSlotCall(
       [interp]
     );
     path.replaceWith(replacement);
+    htmlContext.slotNames.push(cloneNode(nameId));
     return;
   }
   // ?

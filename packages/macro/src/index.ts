@@ -1,7 +1,6 @@
 import { createMacro } from "babel-plugin-macros";
 import { MacroContext } from "./context";
 import { visitHtml } from "./visitHtml";
-import { visitSlot } from "./visitSlot";
 
 // `source` is not in @types/babel-plugin-macros :(
 // @ts-expect-error

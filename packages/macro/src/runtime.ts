@@ -9,4 +9,8 @@ export const runtimeNames = {
    * Placeholder for slot() call that could not be converted.
    */
   slot: "slot",
+  /**
+   * Placeholder for html() call that could not be converted.
+   */
+  html: "html",
 };
