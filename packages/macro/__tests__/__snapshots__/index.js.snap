@@ -25,16 +25,7 @@ const TwoColumn = wc(
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const TwoColumn = wc(
-  css\`
-    display: flex;
-
-    .left {
-      flex: 100px 0 0;
-    }
-    .right {
-      flex: auto 1 0;
-    }
-  \`,
+  \`:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}\`,
   {
     html: \`
     <div class="left"><slot name="sub"></slot></div>
@@ -68,7 +59,7 @@ var _context;
 import { escapeHtml as _escapeHtml } from "@castella/runtime";
 const expr1 = "foo",
   expr2 = "bar";
-wc(css\`\`, {
+wc(\`\`, {
   html: \`
     <div><slot name="\${_escapeHtml(expr1)}"></slot></div>
     <div><slot name="\${

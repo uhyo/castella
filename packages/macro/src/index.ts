@@ -1,17 +1,21 @@
 import { createMacro } from "babel-plugin-macros";
 import { MacroContext } from "./context";
+import { visitCss } from "./visitCss";
 import { visitHtml } from "./visitHtml";
 
 // `source` is not in @types/babel-plugin-macros :(
 // @ts-expect-error
 export = createMacro(({ references, state, babel, source }) => {
-  const cssFuncReferences = [...(references.css || [])];
+  const cssReferences = [...(references.css || [])];
   const htmlReferences = [...(references.html || [])];
   const wc = [...(references.wc || [])];
   const slotReferences = [...(references.slot || [])];
 
   const context = new MacroContext(slotReferences);
 
+  for (const ref of cssReferences) {
+    visitCss(ref, context);
+  }
   for (const ref of htmlReferences) {
     visitHtml(ref, context);
   }

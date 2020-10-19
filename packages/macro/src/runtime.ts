@@ -13,4 +13,8 @@ export const runtimeNames = {
    * Placeholder for html() call that could not be converted.
    */
   html: "html",
+  /**
+   * Placeholder for css() call that could not be converted.
+   */
+  css: "css",
 };
