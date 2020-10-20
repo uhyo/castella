@@ -11,9 +11,8 @@ import {
   objectProperty,
   sequenceExpression,
   stringLiteral,
-  TaggedTemplateExpression,
   templateElement,
-  TemplateElement,
+  TemplateLiteral,
   templateLiteral,
 } from "@babel/types";
 import { MacroContext } from "./context";
@@ -41,6 +40,8 @@ export function visitHtml(reference: NodePath, context: MacroContext) {
         visitExpression(e, context, htmlContext);
       }
     }
+    removeTrivia(quasi.node);
+
     // convert to object literal
     const properties: ObjectProperty[] = [
       objectProperty(identifier("html"), optimizeTemplateLiteral(quasi.node)),
@@ -129,4 +130,13 @@ function visitSlotCall(
   // ?
   const runtimeSlot = context.importRuntime(path.scope, runtimeNames.slot);
   path.get("callee").replaceWith(runtimeSlot);
+}
+
+/**
+ * Removes newlines and spaces around newlines.
+ */
+function removeTrivia(expression: TemplateLiteral) {
+  for (const quasi of expression.quasis) {
+    quasi.value.raw = quasi.value.raw.replace(/\s*\n\s*/g, "");
+  }
 }

@@ -39,5 +39,22 @@ pluginTester({
         \`
       );
     `,
+    "newlines and spaces": `
+      import { wc, css, html, slot } from '../../macro'
+
+
+      wc(
+        css\`\`,
+        html\`
+          <p>foo bar</p>
+          <p>foo\\n
+bar</p>
+          <p>foo\${"\\n"}bar</p>
+          <p>\${\`foo
+bar\`}</p>
+          <p>foo\${"" + "\\n"}</p>
+        \`
+      );
+    `
   },
 });

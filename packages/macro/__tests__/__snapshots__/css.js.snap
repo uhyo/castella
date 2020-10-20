@@ -28,9 +28,7 @@ const A = wc(
 const A = wc(
   \`:host{display:flex;}.left{flex:100px 0 0;font-size:\${size};}:host>.right{flex:auto 1 0;}\`,
   {
-    html: \`
-    <div><slot></slot></div>
-  \`,
+    html: \`<div><slot></slot></div>\`,
   }
 );
 
@@ -58,9 +56,7 @@ const A = wc(
 const A = wc(
   \`:host{display:flex;margin:calc(1em + \${"3px"});color:\${color};}\`,
   {
-    html: \`
-    <div><slot></slot></div>
-  \`,
+    html: \`<div><slot></slot></div>\`,
   }
 );
 

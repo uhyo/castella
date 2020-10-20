@@ -27,14 +27,39 @@ const TwoColumn = wc(
 const TwoColumn = wc(
   \`:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}\`,
   {
-    html: \`
-    <div class="left"><slot name="sub"></slot></div>
-    <div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div>
-    <div class="right"><slot></slot></div>
-  \`,
+    html: \`<div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
     slots: ["sub", "escape!'\\"&<foo>"],
   }
 );
+
+
+`;
+
+exports[`unknown plugin newlines and spaces: newlines and spaces 1`] = `
+
+import { wc, css, html, slot } from '../../macro'
+
+
+      wc(
+        css\`\`,
+        html\`
+          <p>foo bar</p>
+          <p>foo\\n
+bar</p>
+          <p>foo\${"\\n"}bar</p>
+          <p>\${\`foo
+bar\`}</p>
+          <p>foo\${"" + "\\n"}</p>
+        \`
+      );
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+wc(\`\`, {
+  html: \`<p>foo bar</p><p>foo\\nbar</p><p>foo
+bar</p><p>foo
+bar</p><p>foo\${"" + "\\n"}</p>\`,
+});
 
 
 `;
@@ -60,12 +85,11 @@ import { escapeHtml as _escapeHtml } from "@castella/runtime";
 const expr1 = "foo",
   expr2 = "bar";
 wc(\`\`, {
-  html: \`
-    <div><slot name="\${_escapeHtml(expr1)}"></slot></div>
-    <div><slot name="\${
-      ((_context = expr1 + expr2), _escapeHtml(_context))
-    }"></slot></div>
-  \`,
+  html: \`<div><slot name="\${_escapeHtml(
+    expr1
+  )}"></slot></div><div><slot name="\${
+    ((_context = expr1 + expr2), _escapeHtml(_context))
+  }"></slot></div>\`,
   slots: [expr1, _context],
 });
 
