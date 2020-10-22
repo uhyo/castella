@@ -34,7 +34,7 @@ export function visitCastella(reference: NodePath, context: MacroContext) {
           (prop) =>
             isObjectProperty(prop) &&
             isIdentifier(prop.key) &&
-            prop.key.name === "html"
+            prop.key.name === "shadowHtml"
         ) as ObjectProperty | undefined;
         const slotsMember = properties.find(
           (prop) =>
@@ -67,8 +67,8 @@ export function visitCastella(reference: NodePath, context: MacroContext) {
           // create new object expression
           const newObj = objectExpression(
             slotsMember
-              ? [objectProperty(identifier("html"), htmlStr), slotsMember]
-              : [objectProperty(identifier("html"), htmlStr)]
+              ? [objectProperty(identifier("shadowHtml"), htmlStr), slotsMember]
+              : [objectProperty(identifier("shadowHtml"), htmlStr)]
           );
           const component = context.importRuntime(
             reference.scope,

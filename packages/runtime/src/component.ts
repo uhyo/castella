@@ -5,7 +5,7 @@ export type ComponentOptions<SlotName extends string> = {
   /**
    * HTML string to be rendered in Shadow DOM.
    */
-  readonly html: string;
+  readonly shadowHtml: string;
   /**
    * Name of slots accepted by this component.
    */

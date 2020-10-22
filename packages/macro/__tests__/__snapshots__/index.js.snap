@@ -27,7 +27,7 @@ const TwoColumn = castella(
 import { component as _component } from "@castella/runtime";
 
 const TwoColumn = _component({
-  html: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
+  shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
   slots: ["sub", "escape!'\\"&<foo>"],
 });
 
@@ -57,7 +57,7 @@ bar\`}</p>
 import { component as _component } from "@castella/runtime";
 
 _component({
-  html: \`<style></style><p>foo bar</p><p>foo\\nbar</p><p>foo
+  shadowHtml: \`<style></style><p>foo bar</p><p>foo\\nbar</p><p>foo
 bar</p><p>foo
 bar</p><p>foo\${"" + "\\n"}</p>\`,
 });
@@ -90,7 +90,7 @@ const expr1 = "foo",
   expr2 = "bar";
 
 _component({
-  html: \`<style></style><div><slot name="\${_escapeHtml(
+  shadowHtml: \`<style></style><div><slot name="\${_escapeHtml(
     expr1
   )}"></slot></div><div><slot name="\${
     ((_context = expr1 + expr2), _escapeHtml(_context))

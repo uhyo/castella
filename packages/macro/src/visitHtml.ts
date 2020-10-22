@@ -44,7 +44,10 @@ export function visitHtml(reference: NodePath, context: MacroContext) {
 
     // convert to object literal
     const properties: ObjectProperty[] = [
-      objectProperty(identifier("html"), optimizeTemplateLiteral(quasi.node)),
+      objectProperty(
+        identifier("shadowHtml"),
+        optimizeTemplateLiteral(quasi.node)
+      ),
     ];
     if (htmlContext.slotNames.length > 0) {
       properties.push(

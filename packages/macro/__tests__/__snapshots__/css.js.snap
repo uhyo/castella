@@ -28,7 +28,7 @@ const A = castella(
 import { component as _component } from "@castella/runtime";
 
 const A = _component({
-  html: \`<style>:host{display:flex;}.left{flex:100px 0 0;font-size:\${size};}:host>.right{flex:auto 1 0;}</style><div><slot></slot></div>\`,
+  shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;font-size:\${size};}:host>.right{flex:auto 1 0;}</style><div><slot></slot></div>\`,
 });
 
 
@@ -55,7 +55,7 @@ const A = castella(
 import { component as _component } from "@castella/runtime";
 
 const A = _component({
-  html: \`<style>:host{display:flex;margin:calc(1em + 3px);color:\${color};}</style><div><slot></slot></div>\`,
+  shadowHtml: \`<style>:host{display:flex;margin:calc(1em + 3px);color:\${color};}</style><div><slot></slot></div>\`,
 });
 
 

@@ -7,7 +7,7 @@ describe("wc", () => {
   describe("basic", () => {
     it("no slot", () => {
       const Hello = component({
-        html: `
+        shadowHtml: `
           <style>
             div {
               font-size: 100px;
@@ -28,7 +28,7 @@ describe("wc", () => {
     });
     it("one slot", () => {
       const Hello = component({
-        html: `
+        shadowHtml: `
           <style>
             div {
               font-size: 100px;
@@ -53,7 +53,7 @@ describe("wc", () => {
     });
     it("multiple slots", () => {
       const Hello = component({
-        html: `
+        shadowHtml: `
         <style>
           div {
             font-size: 100px;
@@ -81,7 +81,7 @@ describe("wc", () => {
   });
   describe("Named slot values", () => {
     const Hello = component({
-      html: `
+      shadowHtml: `
         <style>
           div {
             font-size: 100px;
