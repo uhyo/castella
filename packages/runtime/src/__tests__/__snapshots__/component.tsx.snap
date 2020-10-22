@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`wc Named slot values array 1`] = `"<b slot=\\"child\\">Hello</b><b slot=\\"child\\">val is foobar</b><b slot=\\"child\\">val is wow</b>"`;
+
+exports[`wc Named slot values boolean 1`] = `"<wc-text slot=\\"child\\"></wc-text>"`;
+
+exports[`wc Named slot values class component 1`] = `"<b slot=\\"child\\">val is aaaaa</b>"`;
+
+exports[`wc Named slot values fragment 1`] = `"<wc-text slot=\\"child\\">Hi</wc-text><b slot=\\"child\\">Hello</b><b slot=\\"child\\">val is foobar</b><b slot=\\"child\\">val is wow</b>"`;
+
+exports[`wc Named slot values function component 1`] = `"<b slot=\\"child\\">val is abcde</b>"`;
+
+exports[`wc Named slot values intrinsic element 1`] = `"<span slot=\\"child\\">Hello</span>"`;
+
+exports[`wc Named slot values nested class component 1`] = `"<b slot=\\"child\\">val is aaaaaaaaaaaaaaa</b>"`;
+
+exports[`wc Named slot values nested function component 1`] = `"<b slot=\\"child\\">val is abcdeabcdeabcde</b>"`;
+
+exports[`wc Named slot values null 1`] = `""`;
+
+exports[`wc Named slot values number 1`] = `"<wc-text slot=\\"child\\">123</wc-text>"`;
+
+exports[`wc Named slot values reused function component 1`] = `"<b slot=\\"child\\">val is def</b>"`;
+
+exports[`wc Named slot values text 1`] = `"<wc-text slot=\\"child\\">foobar</wc-text>"`;
+
+exports[`wc Named slot values undefined 1`] = `"<wc-text slot=\\"child\\"></wc-text>"`;
+
+exports[`wc basic multiple slots 1`] = `
+"
+        <style>
+          div {
+            font-size: 100px;
+          }
+        </style>
+        <header><slot name=\\"header\\"></slot></header>
+        <div><slot></slot></div>
+        <header><slot name=\\"footer\\"></slot></header>
+      "
+`;
+
+exports[`wc basic multiple slots 2`] = `"<b slot=\\"header\\">head!</b><wc-text slot=\\"footer\\">foo!</wc-text><span>Foobar</span>"`;
+
+exports[`wc basic no slot 1`] = `
+"
+          <style>
+            div {
+              font-size: 100px;
+            }
+          </style>
+          <div>Hello</div>
+        "
+`;
+
+exports[`wc basic no slot 2`] = `""`;
+
+exports[`wc basic one slot 1`] = `
+"
+          <style>
+            div {
+              font-size: 100px;
+            }
+          </style>
+          <div><slot></slot></div>
+      "
+`;
+
+exports[`wc basic one slot 2`] = `"<span>Foobar</span>"`;
