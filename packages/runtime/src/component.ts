@@ -9,7 +9,7 @@ export type ComponentOptions<SlotName extends string> = {
   /**
    * Name of slots accepted by this component.
    */
-  readonly slots: readonly SlotName[];
+  readonly slots?: readonly SlotName[];
   /**
    * Name of this component.
    */
