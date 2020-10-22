@@ -6,6 +6,10 @@ export const runtimeNames = {
    */
   escapeHtml: "escapeHtml",
   /**
+   * Make a castella component.
+   */
+  component: "component",
+  /**
    * Placeholder for slot() call that could not be converted.
    */
   slot: "slot",
@@ -17,4 +21,8 @@ export const runtimeNames = {
    * Placeholder for css() call that could not be converted.
    */
   css: "css",
+  /**
+   * Placeholder for castella() call that could not be converted.
+   */
+  castella: "castella",
 };

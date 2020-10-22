@@ -7,9 +7,9 @@ pluginTester({
   babelOptions: { filename: __filename },
   tests: {
     placeholders: `
-      import { wc, css, html, slot } from '../../macro'
+      import { castella, css, html, slot } from '../../macro'
 
-      const A = wc(
+      const A = castella(
         css\`
           display: flex;
 
@@ -22,9 +22,9 @@ pluginTester({
       );
     `,
     nested: `
-      import { wc, css, html, slot } from '../../macro'
+      import { castella, css, html, slot } from '../../macro'
 
-      const A = wc(
+      const A = castella(
         css\`
           display: flex;
 
@@ -45,9 +45,9 @@ pluginTester({
     `,
     cannotConvert: {
       code: `
-        import { wc, css, html, slot } from '../../macro'
+        import { castella, css, html, slot } from '../../macro'
 
-        const A = wc(
+        const A = castella(
           css\`
             display: flex;
 

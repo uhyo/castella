@@ -7,9 +7,9 @@ pluginTester({
   babelOptions: { filename: __filename },
   tests: {
     basic: `
-      import { wc, css, html, slot } from '../../macro'
+      import { castella, css, html, slot } from '../../macro'
 
-      const TwoColumn = wc(
+      const TwoColumn = castella(
         css\`
           display: flex;
 
@@ -28,10 +28,10 @@ pluginTester({
       );
     `,
     slotExpr: `
-      import { wc, css, html, slot } from '../../macro'
+      import { castella, css, html, slot } from '../../macro'
 
       const expr1 = "foo", expr2 = "bar";
-      wc(
+      castella(
         css\`\`,
         html\`
           <div>\${slot(expr1)}</div>
@@ -40,10 +40,10 @@ pluginTester({
       );
     `,
     "newlines and spaces": `
-      import { wc, css, html, slot } from '../../macro'
+      import { castella, css, html, slot } from '../../macro'
 
 
-      wc(
+      castella(
         css\`\`,
         html\`
           <p>foo bar</p>

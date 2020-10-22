@@ -2,9 +2,9 @@
 
 exports[`unknown plugin nested: nested 1`] = `
 
-import { wc, css, html, slot } from '../../macro'
+import { castella, css, html, slot } from '../../macro'
 
-const A = wc(
+const A = castella(
   css\`
     display: flex;
 
@@ -25,21 +25,20 @@ const A = wc(
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const A = wc(
-  \`:host{display:flex;}.left{flex:100px 0 0;font-size:\${size};}:host>.right{flex:auto 1 0;}\`,
-  {
-    html: \`<div><slot></slot></div>\`,
-  }
-);
+import { component as _component } from "@castella/runtime";
+
+const A = _component({
+  html: \`<style>:host{display:flex;}.left{flex:100px 0 0;font-size:\${size};}:host>.right{flex:auto 1 0;}</style><div><slot></slot></div>\`,
+});
 
 
 `;
 
 exports[`unknown plugin placeholders: placeholders 1`] = `
 
-import { wc, css, html, slot } from '../../macro'
+import { castella, css, html, slot } from '../../macro'
 
-const A = wc(
+const A = castella(
   css\`
     display: flex;
 
@@ -53,12 +52,11 @@ const A = wc(
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const A = wc(
-  \`:host{display:flex;margin:calc(1em + \${"3px"});color:\${color};}\`,
-  {
-    html: \`<div><slot></slot></div>\`,
-  }
-);
+import { component as _component } from "@castella/runtime";
+
+const A = _component({
+  html: \`<style>:host{display:flex;margin:calc(1em + 3px);color:\${color};}</style><div><slot></slot></div>\`,
+});
 
 
 `;
