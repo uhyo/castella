@@ -23,5 +23,9 @@
     "babel-jest": "^26.6.0",
     "jest": "^26.6.0",
     "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.53",
+    "react-wc": "^0.2.0"
   }
 }
