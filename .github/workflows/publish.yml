@@ -34,9 +34,9 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-        working-directory: ./packages/macro
+          package: ./packages/macro/package.json
       - name: Publish runtime
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-        working-directory: ./packages/runtime
+          package: ./packages/runtime/package.json
