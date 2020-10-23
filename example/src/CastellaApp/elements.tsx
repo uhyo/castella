@@ -50,3 +50,20 @@ export const Counter = castella(
   `,
   html` <div>${slot()}</div> `
 );
+
+export const TwoColumn = castella(
+  css`
+    display: flex;
+
+    .aside {
+      flex: 100px 0 0;
+    }
+    .main {
+      flex: auto 1 0;
+    }
+  `,
+  html`
+    <div class="aside">${slot("aside")}</div>
+    <div class="main">${slot("main")}</div>
+  `
+);
