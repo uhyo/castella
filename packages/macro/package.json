@@ -20,6 +20,11 @@
     "type": "git",
     "url": "https://github.com/uhyo/castella.git"
   },
+  "files": [
+    "lib/**/*",
+    "src/**/*",
+    "types.d.ts"
+  ],
   "dependencies": {
     "babel-plugin-macros": "^2.8.0",
     "stylis": "^4.0.3"

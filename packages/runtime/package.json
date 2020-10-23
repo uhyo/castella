@@ -14,7 +14,15 @@
   },
   "keywords": [],
   "author": "uhyo <uhyo@uhy.ooo>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uhyo/castella.git"
+  },
   "license": "MIT",
+  "files": [
+    "lib/**/*",
+    "src/**/*"
+  ],
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
