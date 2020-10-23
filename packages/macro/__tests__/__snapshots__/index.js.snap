@@ -29,6 +29,7 @@ import { component as _component } from "@castella/runtime";
 const TwoColumn = _component({
   shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
   slots: ["sub", "escape!'\\"&<foo>"],
+  name: "castella-twocolumn-518498",
 });
 
 
@@ -39,7 +40,7 @@ exports[`unknown plugin newlines and spaces: newlines and spaces 1`] = `
 import { castella, css, html, slot } from '../../macro'
 
 
-      castella(
+      const あいうComponent = castella(
         css\`\`,
         html\`
           <p>foo bar</p>
@@ -56,10 +57,11 @@ bar\`}</p>
 
 import { component as _component } from "@castella/runtime";
 
-_component({
+const あいうComponent = _component({
   shadowHtml: \`<style></style><p>foo bar</p><p>foo\\nbar</p><p>foo
 bar</p><p>foo
 bar</p><p>foo\${"" + "\\n"}</p>\`,
+  name: "castella-\\u3042\\u3044\\u3046component-518498",
 });
 
 
@@ -70,7 +72,7 @@ exports[`unknown plugin slotExpr: slotExpr 1`] = `
 import { castella, css, html, slot } from '../../macro'
 
 const expr1 = "foo", expr2 = "bar";
-castella(
+const CcCcC = castella(
   css\`\`,
   html\`
     <div>\${slot(expr1)}</div>
@@ -89,13 +91,14 @@ import {
 const expr1 = "foo",
   expr2 = "bar";
 
-_component({
+const CcCcC = _component({
   shadowHtml: \`<style></style><div><slot name="\${_escapeHtml(
     expr1
   )}"></slot></div><div><slot name="\${
     ((_context = expr1 + expr2), _escapeHtml(_context))
   }"></slot></div>\`,
   slots: [expr1, _context],
+  name: "castella-ccccc-518498",
 });
 
 

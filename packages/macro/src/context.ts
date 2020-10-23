@@ -12,11 +12,14 @@ import {
   Program,
   stringLiteral,
 } from "@babel/types";
+import { createHash } from "crypto";
 import { runtimeModule } from "./runtime";
 import { upsert } from "./util/upsert";
 
 export class MacroContext {
   readonly slotReferences: Set<Node>;
+  readonly fileRelativePath: string;
+  readonly fileNameHash: string;
 
   /**
    * ImportDeclaration for runtime.
@@ -29,8 +32,15 @@ export class MacroContext {
     }
   >;
 
-  constructor(slotReferences: readonly NodePath[]) {
+  constructor(slotReferences: readonly NodePath[], fileRelativePath: string) {
     this.slotReferences = new Set(slotReferences.map((path) => path.node));
+    this.fileRelativePath = fileRelativePath;
+
+    // calculate hash from file path
+    const hash = createHash("md5");
+    hash.update(fileRelativePath);
+    this.fileNameHash = hash.digest("hex").toLowerCase().slice(0, 6);
+
     this.#runtimeImportDeclarationMap = new WeakMap();
   }
 

@@ -31,7 +31,7 @@ pluginTester({
       import { castella, css, html, slot } from '../../macro'
 
       const expr1 = "foo", expr2 = "bar";
-      castella(
+      const CcCcC = castella(
         css\`\`,
         html\`
           <div>\${slot(expr1)}</div>
@@ -43,7 +43,7 @@ pluginTester({
       import { castella, css, html, slot } from '../../macro'
 
 
-      castella(
+      const あいうComponent = castella(
         css\`\`,
         html\`
           <p>foo bar</p>

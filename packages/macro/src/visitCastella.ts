@@ -8,12 +8,15 @@ import {
   objectExpression,
   ObjectProperty,
   objectProperty,
+  stringLiteral,
   templateElement,
   templateLiteral,
 } from "@babel/types";
 import { MacroContext } from "./context";
+import { escapeCustomElementName } from "./escape";
 import { runtimeNames } from "./runtime";
 import { optimizeTemplateLiteral } from "./util/optimizeTemplateLiteral";
+import { randomName } from "./util/randomName";
 
 export function visitCastella(reference: NodePath, context: MacroContext) {
   const { parentPath } = reference;
@@ -64,11 +67,31 @@ export function visitCastella(reference: NodePath, context: MacroContext) {
               [argCss.node, htmlMember.value]
             )
           );
+          const elementName =
+            "castella-" +
+            escapeCustomElementName(
+              determineComponentName(parentPath) || randomName()
+            ) +
+            "-" +
+            context.fileNameHash;
+
+          const nameProperty = objectProperty(
+            identifier("name"),
+            stringLiteral(elementName)
+          );
+
           // create new object expression
           const newObj = objectExpression(
             slotsMember
-              ? [objectProperty(identifier("shadowHtml"), htmlStr), slotsMember]
-              : [objectProperty(identifier("shadowHtml"), htmlStr)]
+              ? [
+                  objectProperty(identifier("shadowHtml"), htmlStr),
+                  slotsMember,
+                  nameProperty,
+                ]
+              : [
+                  objectProperty(identifier("shadowHtml"), htmlStr),
+                  nameProperty,
+                ]
           );
           const component = context.importRuntime(
             reference.scope,
@@ -88,4 +111,22 @@ export function visitCastella(reference: NodePath, context: MacroContext) {
     runtimeNames.castella
   );
   reference.replaceWith(runtimeCastella);
+}
+
+function determineComponentName(init: NodePath): string | undefined {
+  let path: NodePath | undefined = init;
+  while (path) {
+    if (path.isVariableDeclarator()) {
+      const id = path.node.id;
+      if (isIdentifier(id)) {
+        return id.name;
+      } else {
+        return undefined;
+      }
+    }
+    if (path.isStatement() || path.isProgram()) {
+      return undefined;
+    }
+    path = path.parentPath;
+  }
 }
