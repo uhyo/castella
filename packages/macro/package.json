@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "CSS in JS for React",
   "main": "lib/index.js",
+  "types": "./types.d.ts",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
