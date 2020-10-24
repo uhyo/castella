@@ -13,7 +13,9 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
       "@castella/macro": path.join(__dirname, "../packages/macro"),
-      "@castella/runtime": path.join(__dirname, "../packages/runtime")
+      "@castella/runtime": path.join(__dirname, "../packages/runtime"),
+      "react": path.join(__dirname, "node_modules/react"),
+      "react-dom": path.join(__dirname, "node_modules/react-dom"),
     }
   },
   module: {
