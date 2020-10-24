@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`wcIntrinsic supported section: no slot 1`] = `
+"
+            <style>
+              div {
+                font-size: 100px;
+              }
+            </style>
+            <div>Hello</div>
+          "
+`;
+
+exports[`wcIntrinsic supported section: no slot 2`] = `""`;
