@@ -45,10 +45,32 @@ export type CastellaComponent<
 export function slot(): Slot<"">;
 export function slot<SlotName extends string>(name: SlotName): Slot<SlotName>;
 
+export type ShadowAllowElementName =
+  | "article"
+  | "aside"
+  | "blockquote"
+  | "body"
+  | "div"
+  | "footer"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "header"
+  | "main"
+  | "nav"
+  | "p"
+  | "section"
+  | "span";
+
+type CastellaFunction = <SlotName extends string>(
+  css: string,
+  html: HtmlResult<SlotName>
+) => CastellaComponent<SlotName>;
 /**
  * Creates a React component from given CSS and HTML.
  */
-export function castella<SlotName extends string>(
-  css: string,
-  html: HtmlResult<SlotName>
-): CastellaComponent<SlotName>;
+export const castella: CastellaFunction &
+  Record<ShadowAllowElementName, CastellaFunction>;
