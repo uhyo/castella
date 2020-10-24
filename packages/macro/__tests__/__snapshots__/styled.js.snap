@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unknown plugin computed name: computed name 1`] = `
+
+import { styled } from '../../macro'
+
+const expr = "span";
+const あいうComponent = styled[expr]\`
+  font-weight: bold;
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { styledComponent as _styledComponent } from "@castella/runtime";
+const expr = "span";
+
+const あいうComponent = _styledComponent({
+  css: \`.castella-あいうComponent-203ffa{font-weight:bold;}\`,
+  className: "castella-\\u3042\\u3044\\u3046Component-203ffa",
+  element: expr,
+});
+
+
+`;
+
+exports[`unknown plugin nested: nested 1`] = `
+
+import { styled } from '../../macro'
+
+const あいう = styled.div\`
+  display: flex;
+  & > * {
+    flex: 100px 0 0;
+  }
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { styledComponent as _styledComponent } from "@castella/runtime";
+
+const あいう = _styledComponent({
+  css: \`.castella-あいう-203ffa{display:flex;}.castella-あいう-203ffa>*{flex:100px 0 0;}\`,
+  className: "castella-\\u3042\\u3044\\u3046-203ffa",
+  element: "div",
+});
+
+
+`;
+
+exports[`unknown plugin no hole: no hole 1`] = `
+
+import { styled } from '../../macro'
+
+const input = styled.input\`
+  background-color: yellow;
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { styledComponent as _styledComponent } from "@castella/runtime";
+
+const input = _styledComponent({
+  css: \`.castella-input-203ffa{background-color:yellow;}\`,
+  className: "castella-input-203ffa",
+  element: "input",
+});
+
+
+`;
+
+exports[`unknown plugin some hole: some hole 1`] = `
+
+import { styled } from '../../macro'
+
+const color = "yellow";
+const input = styled["input"]\`
+  background-color: \${color};
+\`;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { styledComponent as _styledComponent } from "@castella/runtime";
+const color = "yellow";
+
+const input = _styledComponent({
+  css: \`.castella-input-203ffa{background-color:\${color};}\`,
+  className: "castella-input-203ffa",
+  element: "input",
+});
+
+
+`;

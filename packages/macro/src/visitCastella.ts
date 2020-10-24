@@ -20,6 +20,7 @@ import {
 import { MacroContext } from "./context";
 import { escapeCustomElementName } from "./escape";
 import { runtimeNames } from "./runtime";
+import { determineComponentName } from "./transform/determineComponentName";
 import { optimizeTemplateLiteral } from "./util/optimizeTemplateLiteral";
 import { randomName } from "./util/randomName";
 
@@ -66,24 +67,6 @@ export function visitCastella(reference: NodePath, context: MacroContext) {
     runtimeNames.castella
   );
   reference.replaceWith(runtimeCastella);
-}
-
-function determineComponentName(init: NodePath): string | undefined {
-  let path: NodePath | undefined = init;
-  while (path) {
-    if (path.isVariableDeclarator()) {
-      const id = path.node.id;
-      if (isIdentifier(id)) {
-        return id.name;
-      } else {
-        return undefined;
-      }
-    }
-    if (path.isStatement() || path.isProgram()) {
-      return undefined;
-    }
-    path = path.parentPath;
-  }
 }
 
 function processCastellaCall(
