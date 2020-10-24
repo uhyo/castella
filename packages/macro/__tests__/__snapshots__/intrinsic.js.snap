@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unknown plugin computed expr: computed expr 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const expr = "span";
+const あいうComponent = castella[expr](
+  css\`\`,
+  html\`
+    <p>foo bar</p>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { intrinsicComponent as _intrinsicComponent } from "@castella/runtime";
+const expr = "span";
+
+const あいうComponent = _intrinsicComponent({
+  shadowHtml: \`<style></style><p>foo bar</p>\`,
+  element: expr,
+});
+
+
+`;
+
+exports[`unknown plugin computed: computed 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const CcCcC = castella["section"](
+  css\`\`,
+  html\` \${slot()} \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { intrinsicComponent as _intrinsicComponent } from "@castella/runtime";
+
+const CcCcC = _intrinsicComponent({
+  shadowHtml: \`<style></style> <slot></slot> \`,
+  element: "section",
+});
+
+
+`;
+
+exports[`unknown plugin non-computed: non-computed 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const TwoColumn = castella.div(
+  css\`
+    display: flex;
+
+    .left {
+      flex: 100px 0 0;
+    }
+    .right {
+      flex: auto 1 0;
+    }
+  \`,
+  html\`
+    <div class="left">\${slot("sub")}</div>
+    <div class="right">\${slot()}</div>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { intrinsicComponent as _intrinsicComponent } from "@castella/runtime";
+
+const TwoColumn = _intrinsicComponent({
+  shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="right"><slot></slot></div>\`,
+  slots: ["sub"],
+  element: "div",
+});
+
+
+`;
