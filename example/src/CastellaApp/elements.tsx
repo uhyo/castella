@@ -17,7 +17,7 @@ export const AppStyle = castella(
   `
 );
 
-export const CounterValue = castella(
+export const CounterValue = castella.span(
   css`
     font-weight: bold;
   `,
@@ -35,7 +35,7 @@ export const Counters = castella(
   html` <div>${slot()}</div> `
 );
 
-export const Counter = castella(
+export const Counter = castella.div(
   css`
     display: flex;
     flex-flow: nowrap row;
