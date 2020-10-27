@@ -1,4 +1,4 @@
-import { castella, css, html, slot } from "@castella/macro";
+import { castella, css, html, slot, styled } from "@castella/macro";
 
 export const AppStyle = castella(
   css`
@@ -17,12 +17,9 @@ export const AppStyle = castella(
   `
 );
 
-export const CounterValue = castella.span(
-  css`
-    font-weight: bold;
-  `,
-  html` ${slot()} `
-);
+export const CounterValue = styled.span`
+  font-weight: bold;
+`;
 
 export const Counters = castella(
   css`

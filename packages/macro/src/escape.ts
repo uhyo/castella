@@ -26,3 +26,9 @@ export function escapeCustomElementName(str: string) {
   // https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
   return str.toLowerCase().replace(invalidCustomElementChar, "_");
 }
+
+const invalidCSSIdentChar = /[^-0-9a-zA-Z_\x80-\u{effff}]/gu;
+export function escapeClassName(str: string) {
+  // https://www.w3.org/TR/css-syntax-3/#typedef-ident-token
+  return str.replace(invalidCSSIdentChar, "_");
+}

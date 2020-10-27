@@ -12,10 +12,11 @@ export const runtimeNames = {
   /**
    * Make a intrinsic castella component.
    */
-  /**
-   * Make a castella component.
-   */
   intrinsicComponent: "intrinsicComponent",
+  /**
+   * Make a stlyed component.
+   */
+  styledComponent: "styledComponent",
   /**
    * Placeholder for slot() call that could not be converted.
    */

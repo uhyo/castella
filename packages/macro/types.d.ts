@@ -74,3 +74,13 @@ type CastellaFunction = <SlotName extends string>(
  */
 export const castella: CastellaFunction &
   Record<ShadowAllowElementName, CastellaFunction>;
+
+export const styled: {
+  /**
+   * Creates a React component with given CSS attached.
+   */
+  [Elm in keyof JSX.IntrinsicElements]: (
+    arr: TemplateStringsArray,
+    ...values: readonly string[]
+  ) => React.FunctionComponent<JSX.IntrinsicElements[Elm]>;
+};
