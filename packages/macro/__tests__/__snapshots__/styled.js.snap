@@ -17,7 +17,7 @@ const expr = "span";
 const あいうComponent = _styledComponent({
   css: \`.castella-あいうComponent-203ffa{font-weight:bold;}\`,
   className: "castella-\\u3042\\u3044\\u3046Component-203ffa",
-  element: expr,
+  elementName: expr,
 });
 
 
@@ -41,7 +41,7 @@ import { styledComponent as _styledComponent } from "@castella/runtime";
 const あいう = _styledComponent({
   css: \`.castella-あいう-203ffa{display:flex;}.castella-あいう-203ffa>*{flex:100px 0 0;}\`,
   className: "castella-\\u3042\\u3044\\u3046-203ffa",
-  element: "div",
+  elementName: "div",
 });
 
 
@@ -62,7 +62,7 @@ import { styledComponent as _styledComponent } from "@castella/runtime";
 const input = _styledComponent({
   css: \`.castella-input-203ffa{background-color:yellow;}\`,
   className: "castella-input-203ffa",
-  element: "input",
+  elementName: "input",
 });
 
 
@@ -85,7 +85,7 @@ const color = "yellow";
 const input = _styledComponent({
   css: \`.castella-input-203ffa{background-color:\${color};}\`,
   className: "castella-input-203ffa",
-  element: "input",
+  elementName: "input",
 });
 
 

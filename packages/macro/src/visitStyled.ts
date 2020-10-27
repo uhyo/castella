@@ -58,7 +58,7 @@ export function visitStyled(reference: NodePath, context: MacroContext) {
         const obj = objectExpression([
           objectProperty(identifier("css"), cssString),
           objectProperty(identifier("className"), stringLiteral(className)),
-          objectProperty(identifier("element"), elementName),
+          objectProperty(identifier("elementName"), elementName),
         ]);
 
         const replacement = callExpression(styledComponent, [obj]);
