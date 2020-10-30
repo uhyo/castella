@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "@types/react": "^16.9.53",
-    "react-wc": "^0.2.0"
+    "react-wc": "^0.2.2"
   }
 }
