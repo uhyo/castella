@@ -121,8 +121,8 @@ function visitSlotCall(
     // `<slot name="${excapeHtml(someExpr)"></slot>`
     const replacement = templateLiteral(
       [
-        templateElement({ raw: `<slot name="` }),
-        templateElement({ raw: `"></slot>` }, true),
+        templateElement({ raw: `<slot name="`, cooked: `<slot name="` }),
+        templateElement({ raw: `"></slot>`, cooked: `"></slot>` }, true),
       ],
       [interp]
     );
@@ -141,5 +141,8 @@ function visitSlotCall(
 function removeTrivia(expression: TemplateLiteral) {
   for (const quasi of expression.quasis) {
     quasi.value.raw = quasi.value.raw.replace(/\s*\n\s*/g, "");
+    if (quasi.value.cooked) {
+      quasi.value.cooked = quasi.value.cooked.replace(/\s*\n\s*/g, "");
+    }
   }
 }

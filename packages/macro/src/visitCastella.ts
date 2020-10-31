@@ -106,13 +106,16 @@ function processCastellaCall(
           [
             templateElement({
               raw: "<style>",
+              cooked: "<style>",
             }),
             templateElement({
               raw: "</style>",
+              cooked: "</style>",
             }),
             templateElement(
               {
                 raw: "",
+                cooked: "",
               },
               true
             ),
