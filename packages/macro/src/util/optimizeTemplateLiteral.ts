@@ -21,26 +21,36 @@ export function optimizeTemplateLiteral(
     visitExpression(e);
   }
   visitQuasi(quasis[expressions.length]);
+  newQuasis[newQuasis.length - 1].tail = true;
 
   return templateLiteral(newQuasis, newExpressions);
 
   function visitQuasi(element: TemplateElement) {
     if (previousQuasi) {
       previousQuasi.value.raw += element.value.raw;
+      if (previousQuasi.value.cooked !== undefined && element.value.cooked) {
+        previousQuasi.value.cooked += element.value.cooked;
+      }
     } else {
+      element.tail = false;
       newQuasis.push(element);
       previousQuasi = element;
     }
   }
   function visitExpression(expr: Expression | TSType) {
     if (!previousQuasi) {
-      previousQuasi = templateElement({
-        raw: "",
-      });
+      previousQuasi = templateElement(
+        {
+          raw: "",
+          cooked: "",
+        },
+        false
+      );
       newQuasis.push(previousQuasi);
     }
     if (isStringLiteral(expr)) {
       previousQuasi.value.raw += expr.value;
+      previousQuasi.value.cooked += expr.value;
     } else if (isTemplateLiteral(expr)) {
       // nested template literal
       const { expressions, quasis } = expr;

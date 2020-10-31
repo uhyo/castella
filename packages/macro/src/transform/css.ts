@@ -75,18 +75,22 @@ function convertStringWithPlaceholderToTemplateLiteral(
   let nextQuasiStart = 0;
   while ((match = r.exec(str))) {
     const placeHolderId = parseInt(match[1], 10);
+    const slice = str.slice(nextQuasiStart, match.index);
     quasis.push(
       templateElement({
-        raw: str.slice(nextQuasiStart, match.index),
+        raw: slice,
+        cooked: slice,
       })
     );
     newExpressions.push(expressions[placeHolderId]);
     filledFlags[placeHolderId] = true;
     nextQuasiStart = match.index + match[0].length;
   }
+  const slice = str.slice(nextQuasiStart);
   quasis.push(
     templateElement({
-      raw: str.slice(nextQuasiStart),
+      raw: slice,
+      cooked: slice,
     })
   );
   // if couldn't correctly converted, throw an error

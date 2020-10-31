@@ -13,10 +13,12 @@ import {
   stringLiteral,
 } from "@babel/types";
 import { createHash } from "crypto";
+import { Config } from "./readConfig";
 import { runtimeModule } from "./runtime";
 import { upsert } from "./util/upsert";
 
 export class MacroContext {
+  readonly config: Config;
   readonly slotReferences: Set<Node>;
   readonly fileRelativePath: string;
   readonly fileNameHash: string;
@@ -32,7 +34,12 @@ export class MacroContext {
     }
   >;
 
-  constructor(slotReferences: readonly NodePath[], fileRelativePath: string) {
+  constructor(
+    config: Config,
+    slotReferences: readonly NodePath[],
+    fileRelativePath: string
+  ) {
+    this.config = config;
     this.slotReferences = new Set(slotReferences.map((path) => path.node));
     this.fileRelativePath = fileRelativePath;
 

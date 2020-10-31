@@ -14,6 +14,10 @@ export type ComponentOptions<SlotName extends string> = {
    * Name of this component.
    */
   readonly name: string;
+  /**
+   * Whether to support declarative Shadow DOM.
+   */
+  readonly declarativeShadowDOM?: boolean;
 };
 
 type CastellaComponentProps<SlotName extends string> = string extends SlotName
@@ -30,7 +34,10 @@ export function component<SlotName extends string>(
   return wc(obj);
 }
 
-export type IntrinsicComponentOptions<SlotName extends string> = {
+export type IntrinsicComponentOptions<
+  SlotName extends string,
+  ElementName extends keyof JSX.IntrinsicElements
+> = {
   /**
    * HTML string to be rendered in Shadow DOM.
    */
@@ -42,11 +49,25 @@ export type IntrinsicComponentOptions<SlotName extends string> = {
   /**
    * Element name
    */
-  readonly element: keyof JSX.IntrinsicElements;
+  readonly element: ElementName;
+  /**
+   * Whether to support declarative Shadow DOM.
+   */
+  readonly declarativeShadowDOM?: boolean;
 };
 
-export function intrinsicComponent<SlotName extends string>(
-  obj: IntrinsicComponentOptions<SlotName>
-): CastellaComponent<SlotName> {
-  return wcIntrinsic(obj);
+export type CastellaIntrinsicComponent<
+  SlotName extends string,
+  ElementName extends keyof JSX.IntrinsicElements
+> = React.FunctionComponent<
+  JSX.IntrinsicElements[ElementName] & CastellaComponentProps<SlotName>
+>;
+
+export function intrinsicComponent<
+  SlotName extends string,
+  ElementName extends keyof JSX.IntrinsicElements
+>(
+  obj: IntrinsicComponentOptions<SlotName, ElementName>
+): CastellaIntrinsicComponent<SlotName, ElementName> {
+  return wcIntrinsic<SlotName, ElementName>(obj);
 }

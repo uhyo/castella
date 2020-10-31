@@ -1,6 +1,7 @@
 import { NodePath } from "@babel/core";
 import {
   ArgumentPlaceholder,
+  booleanLiteral,
   CallExpression,
   callExpression,
   Expression,
@@ -105,13 +106,16 @@ function processCastellaCall(
           [
             templateElement({
               raw: "<style>",
+              cooked: "<style>",
             }),
             templateElement({
               raw: "</style>",
+              cooked: "</style>",
             }),
             templateElement(
               {
                 raw: "",
+                cooked: "",
               },
               true
             ),
@@ -119,24 +123,28 @@ function processCastellaCall(
           [argCss.node, htmlMember.value]
         )
       );
+      const confProps = [];
+      if (context.config.ssr.declarativeShadowDOM) {
+        // this comes first because it is the same for all components (maybe helps compression)
+        confProps.push(
+          objectProperty(
+            identifier("declarativeShadowDOM"),
+            booleanLiteral(true)
+          )
+        );
+      }
+      confProps.push(objectProperty(identifier("shadowHtml"), htmlStr));
+      if (slotsMember) {
+        confProps.push(slotsMember);
+      }
       if (intrinsicElementName) {
         const elementProperty = objectProperty(
           identifier("element"),
           intrinsicElementName
         );
+        confProps.push(elementProperty);
         // create new object expression
-        const newObj = objectExpression(
-          slotsMember
-            ? [
-                objectProperty(identifier("shadowHtml"), htmlStr),
-                slotsMember,
-                elementProperty,
-              ]
-            : [
-                objectProperty(identifier("shadowHtml"), htmlStr),
-                elementProperty,
-              ]
-        );
+        const newObj = objectExpression(confProps);
         const intrinsicComponent = context.importRuntime(
           callPath.scope,
           runtimeNames.intrinsicComponent
@@ -157,16 +165,9 @@ function processCastellaCall(
           identifier("name"),
           stringLiteral(elementName)
         );
+        confProps.push(nameProperty);
         // create new object expression
-        const newObj = objectExpression(
-          slotsMember
-            ? [
-                objectProperty(identifier("shadowHtml"), htmlStr),
-                slotsMember,
-                nameProperty,
-              ]
-            : [objectProperty(identifier("shadowHtml"), htmlStr), nameProperty]
-        );
+        const newObj = objectExpression(confProps);
         const component = context.importRuntime(
           callPath.scope,
           runtimeNames.component

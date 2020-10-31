@@ -9,6 +9,7 @@
     "watch": "tsc --watch",
     "test": "jest",
     "test:update": "jest -u",
+    "test:watch": "jest --watch",
     "prepublishOnly": "npm run build && npm run test"
   },
   "keywords": [
