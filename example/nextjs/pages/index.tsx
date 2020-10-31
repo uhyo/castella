@@ -1,4 +1,4 @@
-import { castella, css, html, slot } from "@castella/macro";
+import { castella, css, html, slot, styled } from "@castella/macro";
 import Head from "next/head";
 
 const Layout = castella(
@@ -31,43 +31,36 @@ const Layout = castella(
     }
   `,
   html`
-    <div class="title">
-      ${slot("title")}
-    </div>
-    <div class="aside">
-      ${slot("aside")}
-    </div>
+    <div class="title">${slot("title")}</div>
+    <div class="aside">${slot("aside")}</div>
     <div class="main">
-      <div>
-        ${slot()}
-      </div>
+      <div>${slot()}</div>
     </div>
   `
-)
+);
 
 const Aside = () => {
-  return <div>
-    <p>This is side menu!</p>
-  </div>
-}
+  return (
+    <div>
+      <p>This is side menu!</p>
+    </div>
+  );
+};
 
-const MainText = castella(
-  css`
+const MainText = styled.div`
   font-weight: bold;
-`,
-  html`${slot()}`
-);
+`;
 
 export default function Home() {
   return (
-    <Layout title={<h1>
-      Castella + Next.js Example
-    </h1>} aside={<Aside />}>
+    <Layout title={<h1>Castella + Next.js Example</h1>} aside={<Aside />}>
       <Head>
         <title>Castella + Next.js Example</title>
       </Head>
 
-      <MainText><p>Hello, world!</p></MainText>
+      <MainText>
+        <p>Hello, world!</p>
+      </MainText>
     </Layout>
-  )
+  );
 }

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styledComponent ssr no ssr div 1`] = `"<div class=\\"test-divdiv\\" data-reactroot=\\"\\"><p>Hi!</p></div>"`;
+
+exports[`styledComponent ssr no ssr input 1`] = `"<input class=\\"test-foobar\\" data-reactroot=\\"\\"/>"`;
+
+exports[`styledComponent ssr no ssr rendered twice 1`] = `"<div class=\\"test-divdiv\\" data-reactroot=\\"\\"><p>Hi!</p><div class=\\"test-divdiv\\"><p>Hoy!</p></div></div>"`;

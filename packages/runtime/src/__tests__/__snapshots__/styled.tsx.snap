@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`styledComponent div 1`] = `"<style data-castella=\\"\\">.test-divdiv{color:red;}</style>"`;
+exports[`styledComponent div 1`] = `"<style data-castella-styled=\\"test-divdiv\\">.test-divdiv{color:red;}</style>"`;
 
 exports[`styledComponent div 2`] = `"<div><div class=\\"test-divdiv\\"><p>Hi!</p></div></div>"`;
 
-exports[`styledComponent input 1`] = `"<style data-castella=\\"\\">.test-foobar{color:red;}</style>"`;
+exports[`styledComponent input 1`] = `"<style data-castella-styled=\\"test-foobar\\">.test-foobar{color:red;}</style>"`;
 
 exports[`styledComponent input 2`] = `"<div><input class=\\"test-foobar\\"></div>"`;
 
-exports[`styledComponent rendered twice 1`] = `"<style data-castella=\\"\\">.test-divdiv{color:red;}</style>"`;
+exports[`styledComponent rendered twice 1`] = `"<style data-castella-styled=\\"test-divdiv\\">.test-divdiv{color:red;}</style>"`;
 
 exports[`styledComponent rendered twice 2`] = `"<div><div class=\\"test-divdiv\\"><p>Hi!</p><div class=\\"test-divdiv\\"><p>Hoy!</p></div></div></div>"`;
