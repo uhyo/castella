@@ -1,5 +1,6 @@
 import { NodePath } from "@babel/core";
 import {
+  booleanLiteral,
   callExpression,
   identifier,
   isExpression,
@@ -55,11 +56,19 @@ export function visitStyled(reference: NodePath, context: MacroContext) {
           runtimeNames.styledComponent
         );
 
-        const obj = objectExpression([
+        const objProperties = [];
+        if (context.config.ssr.styled) {
+          objProperties.push(
+            objectProperty(identifier("ssr"), booleanLiteral(true))
+          );
+        }
+        objProperties.push(
           objectProperty(identifier("css"), cssString),
           objectProperty(identifier("className"), stringLiteral(className)),
-          objectProperty(identifier("elementName"), elementName),
-        ]);
+          objectProperty(identifier("elementName"), elementName)
+        );
+
+        const obj = objectExpression(objProperties);
 
         const replacement = callExpression(styledComponent, [obj]);
         grandpa.replaceWith(replacement);
