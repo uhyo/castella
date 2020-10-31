@@ -14,6 +14,10 @@ export type ComponentOptions<SlotName extends string> = {
    * Name of this component.
    */
   readonly name: string;
+  /**
+   * Whether to support declarative Shadow DOM.
+   */
+  readonly declarativeShadowDOM?: boolean;
 };
 
 type CastellaComponentProps<SlotName extends string> = string extends SlotName
@@ -43,6 +47,10 @@ export type IntrinsicComponentOptions<SlotName extends string> = {
    * Element name
    */
   readonly element: keyof JSX.IntrinsicElements;
+  /**
+   * Whether to support declarative Shadow DOM.
+   */
+  readonly declarativeShadowDOM?: boolean;
 };
 
 export function intrinsicComponent<SlotName extends string>(

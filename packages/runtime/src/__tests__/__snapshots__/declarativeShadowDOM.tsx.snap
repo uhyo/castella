@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`declarativeShadowDOM component one slot 1`] = `
+"<wc-test-foo data-reactroot=\\"\\"><template shadowroot=\\"open\\">
+          <style>
+            div {
+              font-size: 100px;
+            }
+          </style>
+          <div><slot></slot></div>
+      </template><span>Foobar</span></wc-test-foo>"
+`;
+
+exports[`declarativeShadowDOM intrinsicComponent two slots 1`] = `
+"<div data-reactroot=\\"\\"><template shadowroot=\\"open\\">
+          <style>
+            div {
+              font-size: 100px;
+            }
+          </style>
+          <div><slot name=\\"foo\\"></slot><slot name=\\"bar\\"></slot></div>
+      </template><span slot=\\"foo\\">Hi</span><wc-text slot=\\"bar\\">wow</wc-text></div>"
+`;
