@@ -124,13 +124,18 @@ function processCastellaCall(
         )
       );
       const confProps = [];
+      // SSR-related properties come first because they are the same for all components (maybe helps compression)
       if (context.config.ssr.declarativeShadowDOM) {
-        // this comes first because it is the same for all components (maybe helps compression)
         confProps.push(
           objectProperty(
             identifier("declarativeShadowDOM"),
             booleanLiteral(true)
           )
+        );
+      }
+      if (context.config.ssr.classic) {
+        confProps.push(
+          objectProperty(identifier("classicSSR"), booleanLiteral(true))
         );
       }
       confProps.push(objectProperty(identifier("shadowHtml"), htmlStr));

@@ -2,9 +2,7 @@
   "presets": ["next/babel"],
   "plugins": [["babel-plugin-macros", {
     "castella": {
-      "ssr": {
-        "declarativeShadowDOM": true
-      }
+      "ssr": true
     }
   }]]
 }

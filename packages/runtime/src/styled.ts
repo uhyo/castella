@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ServerRenderingContext } from "./ssr";
 
 export type StyledOptions<ElementName extends keyof JSX.IntrinsicElements> = {
+  ssr?: boolean;
   css: string;
   className: string;
   elementName: ElementName;
@@ -11,6 +13,7 @@ const hasDocument = typeof document !== "undefined";
 export function styledComponent<
   ElementName extends keyof JSX.IntrinsicElements
 >({
+  ssr,
   css,
   className,
   elementName,
@@ -20,6 +23,12 @@ export function styledComponent<
   let styleAdded = false;
 
   return ({ children, ...props }) => {
+    if (ssr && !hasDocument) {
+      const sheet = useContext(ServerRenderingContext);
+      if (sheet) {
+        sheet.addStyle(className, css);
+      }
+    }
     if (!styleAdded) {
       if (hasDocument) {
         // old styles may exist when this componend is renewed by Fast Refresh.

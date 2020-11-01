@@ -18,6 +18,10 @@ export type ComponentOptions<SlotName extends string> = {
    * Whether to support declarative Shadow DOM.
    */
   readonly declarativeShadowDOM?: boolean;
+  /**
+   * Whether to support classic SSR.
+   */
+  readonly classicSSR?: boolean;
 };
 
 type CastellaComponentProps<SlotName extends string> = string extends SlotName

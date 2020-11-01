@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unknown plugin basic: basic 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const TwoColumn = castella(
+  css\`
+    display: flex;
+
+    .left {
+      flex: 100px 0 0;
+    }
+    .right {
+      flex: auto 1 0;
+    }
+  \`,
+  html\`
+    <div class="left">\${slot("sub")}</div>
+    <div class="escape">\${slot("escape!'\\"&<foo>")}</div>
+    <div class="right">\${slot()}</div>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { component as _component } from "@castella/runtime";
+
+const TwoColumn = _component({
+  classicSSR: true,
+  shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
+  slots: ["sub", "escape!'\\"&<foo>"],
+  name: "castella-twocolumn-47b84f",
+});
+
+
+`;
+
+exports[`unknown plugin basic2: basic2 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const TwoColumn = castella(
+  css\`
+    display: flex;
+
+    .left {
+      flex: 100px 0 0;
+    }
+    .right {
+      flex: auto 1 0;
+    }
+  \`,
+  html\`
+    <div class="left">\${slot("sub")}</div>
+    <div class="escape">\${slot("escape!'\\"&<foo>")}</div>
+    <div class="right">\${slot()}</div>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { component as _component } from "@castella/runtime";
+
+const TwoColumn = _component({
+  classicSSR: true,
+  shadowHtml: \`<style>:host{display:flex;}.left{flex:100px 0 0;}.right{flex:auto 1 0;}</style><div class="left"><slot name="sub"></slot></div><div class="escape"><slot name="escape!&#39;&quot;&amp;&lt;foo&gt;"></slot></div><div class="right"><slot></slot></div>\`,
+  slots: ["sub", "escape!'\\"&<foo>"],
+  name: "castella-twocolumn-47b84f",
+});
+
+
+`;
+
+exports[`unknown plugin slotExpr: slotExpr 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const expr1 = "foo", expr2 = "bar";
+const CcCcC = castella(
+  css\`\`,
+  html\`
+    <div>\${slot(expr1)}</div>
+    <div>\${slot(expr1 + expr2)}</div>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var _context;
+
+import {
+  escapeHtml as _escapeHtml,
+  component as _component,
+} from "@castella/runtime";
+const expr1 = "foo",
+  expr2 = "bar";
+
+const CcCcC = _component({
+  classicSSR: true,
+  shadowHtml: \`<style></style><div><slot name="\${_escapeHtml(
+    expr1
+  )}"></slot></div><div><slot name="\${
+    ((_context = expr1 + expr2), _escapeHtml(_context))
+  }"></slot></div>\`,
+  slots: [expr1, _context],
+  name: "castella-ccccc-47b84f",
+});
+
+
+`;
+
+exports[`unknown plugin slotExpr2: slotExpr2 1`] = `
+
+import { castella, css, html, slot } from '../../macro'
+
+const expr1 = "foo", expr2 = "bar";
+const CcCcC = castella(
+  css\`\`,
+  html\`
+    <div>\${slot(expr1)}</div>
+    <div>\${slot(expr1 + expr2)}</div>
+  \`
+);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var _context;
+
+import {
+  escapeHtml as _escapeHtml,
+  component as _component,
+} from "@castella/runtime";
+const expr1 = "foo",
+  expr2 = "bar";
+
+const CcCcC = _component({
+  classicSSR: true,
+  shadowHtml: \`<style></style><div><slot name="\${_escapeHtml(
+    expr1
+  )}"></slot></div><div><slot name="\${
+    ((_context = expr1 + expr2), _escapeHtml(_context))
+  }"></slot></div>\`,
+  slots: [expr1, _context],
+  name: "castella-ccccc-47b84f",
+});
+
+
+`;
