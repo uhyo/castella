@@ -5,3 +5,15 @@ exports[`styledComponent ssr no ssr div 1`] = `"<div class=\\"test-divdiv\\" dat
 exports[`styledComponent ssr no ssr input 1`] = `"<input class=\\"test-foobar\\" data-reactroot=\\"\\"/>"`;
 
 exports[`styledComponent ssr no ssr rendered twice 1`] = `"<div class=\\"test-divdiv\\" data-reactroot=\\"\\"><p>Hi!</p><div class=\\"test-divdiv\\"><p>Hoy!</p></div></div>"`;
+
+exports[`styledComponent ssr with ssr div 1`] = `"<div class=\\"test-divdiv\\"><p>Hi!</p></div>"`;
+
+exports[`styledComponent ssr with ssr div 2`] = `"<style data-castella-styled=\\"test-divdiv\\">.test-divdiv{color:red;}</style>"`;
+
+exports[`styledComponent ssr with ssr input 1`] = `"<input class=\\"test-foobar\\"/>"`;
+
+exports[`styledComponent ssr with ssr input 2`] = `"<style data-castella-styled=\\"test-foobar\\">.test-foobar{color:red;}</style>"`;
+
+exports[`styledComponent ssr with ssr rendered twice 1`] = `"<div class=\\"test-divdiv\\"><p>Hi!</p><div class=\\"test-divdiv\\"><p>Hoy!</p></div><div class=\\"test-hello2\\">wow!</div></div>"`;
+
+exports[`styledComponent ssr with ssr rendered twice 2`] = `"<style data-castella-styled=\\"test-divdiv\\">.test-divdiv{color:red;}</style><style data-castella-styled=\\"test-hello2\\">.test-hello2{color:blue;}</style>"`;
