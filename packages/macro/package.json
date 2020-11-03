@@ -1,6 +1,6 @@
 {
   "name": "@castella/macro",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CSS in JS for React",
   "main": "lib/index.js",
   "types": "./types.d.ts",
