@@ -151,7 +151,7 @@ Example configuration for both Declearative Shadom DOM-based SSR and `styled` co
 ```json
 {
   "ssr": {
-    "declarativeShadomDOM": true,
+    "declarativeShadowDOM": true,
     "styled": true
   }
 }
